@@ -1,4 +1,17 @@
-const menu_elements = document.querySelectorAll("ul > li > div")
+const top_bar = document.querySelector(".cabecalho")
+const footer = document.querySelector(".rodape")
+if(document.querySelector(".menu_lateral")){
+    const navbar = document.querySelector(".menu_lateral")
+    // top_bar.setAttribute("style", `--padding-left: ${navbar.clientWidth}px`)
+    top_bar.style.paddingLeft = `calc(${navbar.clientWidth}px + 10px)`
+}
+
+let margins = `--margin-top: ${top_bar.clientHeight}px; --margin-bottom: ${footer.clientHeight}px`
+
+document.querySelector("main").setAttribute("style", margins)
+
+
+/*const menu_elements = document.querySelectorAll("ul > li > div")
 
 menu_elements.forEach((element) => {
     element.classList.remove("active")
@@ -80,3 +93,5 @@ document.querySelectorAll(".item_menu").forEach((element) => {
         }
     })
 })
+
+*/

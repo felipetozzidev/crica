@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 * {
     padding: 0;
@@ -8,19 +8,17 @@
 }
 
 :root {
-    --title-font: "Concert One", sans-serif;
-    --text-font: "Balsamiq Sans", sans-serif;
+    --title-font: "Oxygen", sans-serif;
+    --text-font: "Source Sans 3", sans-serif;
 
-    --white-color: #f1f1f1;
+    --white-color: #FFFFFF;
 
-    --color-1: #70bd6e;
-    --color-2: #d14b4d;
-    --color-layout: #519b4f;
+    --color-1: #519b4f;
+    --color-2: #789974;
+    --color-layout:#002f00;
 }
 
 body {
-    /* min-height: 100vh; */
-    /* width: 100vw; */
     display: grid;
     flex-direction: column;
     min-height: 100vh;
@@ -31,15 +29,16 @@ body {
 header.cabecalho {
     background-color: var(--color-layout);
     display: flex;
-
+    position: absolute;
+    
+    width: 100%;
+    
     font-family: var(--title-font);
-
+    
     justify-content: space-between;
-    margin: 10px;
-
+    
     color: var(--white-color);
     padding: 10px 30px;
-    border-radius: 10px;
 
     height: max-content;
 
@@ -73,12 +72,16 @@ nav.nav-bar {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    background-color: #FFFFFF;
+    margin-top: 50px;
+    
+    
+    
     &>.section_container {
+        border-radius: 10px;
         padding: 30px 30px;
         padding-top: 50px;
         background-color: var(--color-1);
-        border-radius: 10px;
 
         display: flex;
         flex-direction: column;
@@ -184,15 +187,15 @@ nav.nav-bar {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     gap: 20px;
+    margin-top: calc(var(--margin-top) + 15px);
 
     &>div {
         display: flex;
         gap: 20px;
         width: 100%;
-        height: 100%;
+        height: 130px;
         padding-inline: 10px;
         font-family: var(--title-font);
         color: white;
@@ -200,7 +203,7 @@ nav.nav-bar {
 
         &:nth-child(odd)>a:nth-child(1),
         &:nth-child(even)>a:nth-child(2) {
-            background-color: var(--color-2);
+            background-color: var(--color-layout);
         }
 
         &:nth-child(2) {
@@ -215,7 +218,7 @@ nav.nav-bar {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 30px;
+            padding-inline: 30px;
             background-color: var(--color-1);
 
             transition: all .3s ease-in-out;
@@ -229,7 +232,65 @@ nav.nav-bar {
     }
 }
 
-.main_container[data-pag="menu_v2"] {
+.submenu{
+    padding-top: var(--margin-top);
+    padding-bottom: var(--margin-bottom);
+    height: 100%;
+    max-height: calc((100vh) - var(--margin-top) + var(--margin-bottom));
+
+    &>.menu_lateral{
+        height: 100%;
+        width: max-content;
+        min-width: 160px;
+        background-color: var(--color-layout);
+        overflow-y: auto;
+        border-top: 1px solid var(--white-color);
+        
+        &> ul{
+            list-style: none;
+            font-style: var(--title-font);
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            & > li{
+                display: flex;
+                align-items: center;
+                color: var(--white-color);
+                font-family: var(--title-font);
+                border-bottom: 1px solid var(--white-color);
+                
+                & > a{
+                    padding-left: 20px;
+                    padding-block: 15px;
+                    color: var(--white-color);
+                    text-decoration: none;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                &:not(.titulo):hover{
+                    background-color: var(--color-2);
+                }
+
+                &.titulo{
+                    font-size: 25px;
+                    width: 100%;
+                    text-transform: uppercase;
+                    font-weight: 900;
+                    padding-inline: 20px;
+                    padding-block: 15px;
+                    user-select: none;
+                    border-bottom: 2px solid var(--white-color);
+                }
+            }
+        }
+    }
+}
+
+/* .main_container[data-pag="menu_v2"] {
     width: 100%;
     display: flex;
     align-items: center;
@@ -237,7 +298,7 @@ nav.nav-bar {
     flex-direction: column;
     gap: 20px;
 
-    &>ul {
+    &>ul.main_menu {
         width: 80%;
         height: 100%;
         display: grid;
@@ -266,6 +327,7 @@ nav.nav-bar {
             font-family: var(--title-font);
             font-size: 30px;
             align-items: center;
+            position: relative;
             justify-content: center;
             transition: .5s all ease-in-out;
 
@@ -279,7 +341,6 @@ nav.nav-bar {
                 font-size: 50px;
                 background-color: var(--color-1);
                 overflow: hidden;
-                position: relative;
 
                 &::before{
                     content: '';
@@ -302,22 +363,69 @@ nav.nav-bar {
             & > span {
                 transition: all ease-in-out .4s;
             }
+
+            & > ul{
+                display: flex;
+                position: absolute;
+                left: 150px;
+                list-style: none;
+                font-size: 22px;
+
+                & > li{
+                    width: max-content;
+                    padding: 12px;
+
+                    &:hover{
+                        
+                    }
+                }
+            }
+
+            & > ul:not(div.active ~ ul.options){
+                position: absolute;
+                width: max-content;
+                & > li{
+                    display: none;
+                    scale: 0;
+                }
+            }
+            & > div.active ~ ul.options{
+                &>li{
+                    animation: aparecer 1s forwards calc(var(--i) + 3) ease-in-out;
+                }
+            }
         }
     }
 }
 
+    @keyframes aparecer {
+        0%{
+            display: none;
+        }
+        10%{
+            display: flex;
+            scale: 0;
+
+        }
+        100%{
+            scale: 1;
+        }
+    } */
+
 footer.rodape {
+
     background-color: var(--color-layout);
     padding: 20px;
 
     align-self: flex-end;
-
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 10px;
-    border-radius: 10px;
 
     color: var(--white-color);
     font-family: var(--title-font);
 }
+

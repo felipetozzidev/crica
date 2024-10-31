@@ -1,39 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
-</head>
-
-<body>
     <?php
     include_once("parts/header.html")
     ?>
 
     <main class="main_container" data-pag="menu">
         <div>
-            <a href="submenu?index=alunos">
+            <a href="submenu.php?index=alunos">
                 Alunos
             </a>
-            <a href="submenu?index=cursos">
+            <a href="submenu.php?index=cursos">
                 Cursos
             </a>
         </div>
         <div>
-            <a href="submenu?index=disciplinas">
+            <a href="submenu.php?index=disciplinas">
                 Disciplinas
             </a>
-            <a href="submenu?index=professores">
+            <a href="submenu.php?index=professores">
                 Professores
             </a>
         </div>
         <div>
-            <a href="submenu?index=horarios">
+            <a href="submenu.php?index=horarios">
                 Horários
             </a>
-            <a href="submenu?index=salas">
+            <a href="submenu.php?index=salas">
                 Salas
             </a>
         </div>  
@@ -42,6 +32,3 @@
     <?php
     include_once("parts/footer.html")
     ?>
-</body>
-
-</html>
